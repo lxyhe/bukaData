@@ -1,0 +1,28 @@
+<nav class="navbar navbar-default">
+  <div class="container-fluid bg-primary">
+    <div class="navbar-header pull-right">
+      <a style="color:#fff" class="navbar-brand" href="#">
+        用户名:{{userinfoobj.user_name}}
+      </a>
+      <a style="color:#fff" (click)="quit()" class="navbar-brand" href="#">
+         退出
+      </a>
+    </div>
+  </div>
+</nav>
+<section>
+  <div style="margin-left:20px;min-height:1000px" class="col-md-2">
+    <h3>当前机构列表</h3>
+    <ul class="heroes">
+      <li *ngFor="let item of namespace  let i = index;" [class.active]="i==0" [class.selected]="item === selectednamespace" (click)="onSelect(item,i)">
+        <span class="badge">{{item.count}}</span> {{item.namespace}}
+      </li>
+    </ul>
+    <a routerLink="/roomlist">系统管理</a>
+    <div>
+    </div>
+  </div>
+  <div class="col-md-9">
+    <router-outlet></router-outlet>
+  </div>
+</section>

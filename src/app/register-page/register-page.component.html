@@ -1,0 +1,18 @@
+<div style="width:380px;margin:200px auto;">
+  <div class="middle-box text-center loginscreen  animated fadeInDown">
+    <div>
+      <h3 style="margin-bottom:50px">注册页面</h3>
+      <div class="form-group">
+        <input type="text" id="username" [(ngModel)]="rigisterobj.user_name" class="form-control" placeholder="用户名" required="">
+      </div>
+      <div class="form-group">
+        <input type="password" id="password" [(ngModel)]="rigisterobj.user_password" class="form-control" placeholder="密码" required="">
+      </div>
+      <div class="form-group">
+        <input type="register_key" id="register_key" [(ngModel)]="rigisterobj.register_pwd" class="form-control" placeholder="密钥"
+          required="">
+      </div>
+      <button type="button" style="width:380px;margin-bottom:30px" id="resigser" (click)="register()" class="btn btn-primary block full-width m-b">注册 </button>
+    </div>
+  </div>
+</div>
