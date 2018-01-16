@@ -1,108 +1,97 @@
-import { Component, OnInit } from '@angular/core';
-import { Router, ActivatedRoute, ParamMap } from '@angular/router';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { AjaxServeService } from '../../providers/ajax-serve.service';
-
-declare var $;
+import { Router, ActivatedRoute, Params } from '@angular/router';
 export class userInfoObj {
   user_name: string;
   token: string;
 }
-export class namespaceObj {
-  count: number;
-  namespace: any;
-}
-
+declare var $;
 @Component({
-  selector: 'app-main-page',
-  templateUrl: './main-page.component.html',
-  styleUrls: ['./main-page.component.css']
+  selector: 'app-roomlist',
+  templateUrl: './roomlist.component.html',
+  styleUrls: ['./roomlist.component.css']
 })
-
-export class MainPageComponent implements OnInit {
+export class RoomlistComponent implements OnInit {
+  public namespace;
+  public userinfoobj: userInfoObj;
+  public roomlist;
+  public roomInfo;
   public publishInfo;
   public isshow: boolean;
   public isshow_1: boolean;
   public title: string;
-  public userinfoobj: userInfoObj;
-  public namespace: namespaceObj[];
   public namscpaceInfo = [];
   public stremID;
   public userInfo = [];
 
-
-
-  //public isLoading: boolean = false;
-
-  public isShowRoomList: boolean = false;
   constructor(
-    private router: Router,
+    private activatedRoute: ActivatedRoute,
     private ajaxServe: AjaxServeService,
+    private router: Router,
   ) { }
 
   ngOnInit() {
+    this.activatedRoute.params.subscribe((params: Params) => {
+      this.namespace = params['namespace'];
+
+    });
+    this.getroomlist();
+  }
+  getroomlist() {
+    this.userinfoobj = new userInfoObj();
+    var userinfo = JSON.parse(localStorage.getItem('userInfo'))
+
+    if (userinfo !== "" && userinfo !== undefined) {
+      this.userinfoobj.user_name = userinfo.user_name;
+      this.userinfoobj.token = userinfo.token;
+    }
+    var romdata = {
+      user_name: this.userinfoobj.user_name,
+      token: this.userinfoobj.token,
+      namespace: this.namespace,
+      page: 1,
+      cnt: 20,
+
+    }
+    this.ajaxServe.roomlist(romdata)
+      .then((data) => {
+
+        if (data.code == 0 && data.data.data.length !== 0) {
+          this.roomlist = data.data.data;
+        } else {
+        }
+
+      }).catch((err) => {
+
+      })
+  }
+  getRoomInfo(data) {
+    console.log(data);
     this.userinfoobj = new userInfoObj();
     var userinfo = JSON.parse(localStorage.getItem('userInfo'))
     if (userinfo !== "" && userinfo !== undefined) {
       this.userinfoobj.user_name = userinfo.user_name;
       this.userinfoobj.token = userinfo.token;
     }
-    console.log(this.userinfoobj);
-    this.ajaxServe.namespacelist(this.userinfoobj)
-      .then((data) => {
-        console.log(data);
-        if (data.code == 0 && data.data.length !== 0) {
-          this.namespace = data.data;
-        } else {
-        }
-      })
-      .catch(err => {
-        console.log(err);
-      })
-
-  }
-  quit() {
-    if (localStorage.getItem('userInfo') !== "") {
-      localStorage.removeItem('userInfo');
-      // this.router.navigate(['/roomlist']);
-      this.router.navigate(['/loging']);
-    }
-  }
-  onSelect(item: namespaceObj, index: number): void {
-    console.log(item);
-    var userinfo = JSON.parse(localStorage.getItem('userInfo'))
-    if (userinfo !== "" && userinfo !== undefined) {
-      this.userinfoobj.user_name = userinfo.user_name;
-      this.userinfoobj.token = userinfo.token;
-    }
-    var postData1 = {
+    var romdata = {
       user_name: this.userinfoobj.user_name,
       token: this.userinfoobj.token,
-      key: "namespace",
-      value: item.namespace,
+      key: "room",
+      value: data.room
     }
-    this.ajaxServe.getTtends(postData1).then(data => {
-
-      if (data.code == 0) {
-        if (data.data != []) {
-          this.namscpaceInfo = data.data;
-          console.log(this.namscpaceInfo);
+    this.ajaxServe.getTtends(romdata)
+      .then((data) => {
+        if (data.code == 0 && data.data.length !== 0) {
+          this.roomInfo = data.data;
         } else {
         }
-      }
-    }).catch(err => {
-      console.log(err);
-    })
-  }
-  goRoomList(items) {
-    this.router.navigate(['/roomlist', { namespace: items.namespace }]);
+        console.log(data);
+      }).catch((err) => {
+
+      })
   }
   goPublisInfo(datas) {
     this.title = "发布者详情";
-    // var options = {
-    //   keyboard: true,
-    //   show: true,
-    // }
-    // $('#myModal').modal(options)
     var userinfo = JSON.parse(localStorage.getItem('userInfo'))
     if (userinfo !== "" && userinfo !== undefined) {
       this.userinfoobj.user_name = userinfo.user_name;
@@ -220,10 +209,8 @@ export class MainPageComponent implements OnInit {
       console.log(err);
     })
   }
-  goRealTime() {
-    this.router.navigate(['/realtime']);
-  }
-  goRealMap() {
-    this.router.navigate(['/map']);
+  goUserList(items) {
+    console.log(items);
+    this.router.navigate(['/userlist', { roomid: items.room }]);
   }
 }

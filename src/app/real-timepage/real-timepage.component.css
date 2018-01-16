@@ -1,0 +1,144 @@
+section {
+  /*background-color: #072C84;*/
+  /* background: url(assets/background/backgroundImg.png);*/
+  background-image: url('../../assets/background/backgroundImg.png');
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  -moz-background-size: 100% 100%;
+  /* position: relative;
+  z-index: 1; */
+}
+
+.roomInfo li {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  color: #fff;
+  margin-bottom: 15px;
+  font-size: 15px;
+}
+
+.roomInfo li:nth-child(2) {
+  font-size: 28px;
+}
+
+.roomInfo li:nth-child(4) {
+  font-size: 50px;
+}
+
+.roomInfo {
+  padding: 0;
+  margin: 0;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.map {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 1100px;
+  height: 650px;
+  margin-left: -550px;
+  margin-top: -255px;
+  /* z-index: -1; */
+}
+
+nav {
+  padding-top: 10px;
+}
+
+nav>h4 {
+  color: #fff;
+}
+
+.contentheight {
+  height: 320px;
+}
+
+nav>h6 {
+  color: #D9BE19;
+}
+
+.panel-heading {
+  border-bottom: 1px solid #3D4D8C;
+  text-align: center;
+  color: #fff;
+}
+
+.panel-default {
+  border: 1px solid #3D4D8C;
+}
+
+.back_heading {
+  background-color: rgba(0, 0, 0, 0.15);
+}
+
+.td_item {
+  background-color: rgba(0, 0, 0, 0.15);
+  border: none;
+  color: #fff;
+  padding: 0;
+  padding-left: 8px;
+  width: 25%;
+  padding-top: 3px;
+  padding-bottom: 3px;
+}
+
+.abnormal {
+  display: inline-block;
+  padding-left: 8px;
+  padding-right: 8px;
+  background-color: #B56429;
+  border-radius: 2px;
+}
+
+.abnormal_list {
+  margin-left: 5px;
+  display: block;
+  padding-top: 3px;
+  padding-bottom: 3px;
+  border-bottom: 1px solid #38569D;
+}
+
+.panel-body {
+  padding: 0;
+}
+
+.table>thead>tr>th {
+  border: none;
+  padding-top: 0;
+  padding-bottom: 0;
+  /*padding: 0;
+  padding-right: 5px; */
+}
+
+td {
+  border: none;
+  padding: 0;
+}
+
+.back {
+  height: 280px;
+  background-color: rgba(0, 0, 0, 0.15);
+}
+
+.backs {
+  height: 250px;
+}
+
+.draw {
+  height: 305px
+}
+
+.midal {
+  text-align: center;
+}
+
+.leftFloat {
+  left: float;
+}
+
+.rightFloat {
+  right: float;
+}

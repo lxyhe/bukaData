@@ -10,7 +10,8 @@
       <div class="form-group">
         <input type="password" id="password" [(ngModel)]="loginobj.user_password" class="form-control" placeholder="密码" required="">
       </div>
-      <button type="button" style="width:380px;margin-bottom:30px" (click)="loging()" id="logining" class="btn btn-primary block full-width m-b">登 录</button>
+
+      <button type="button" style="width:380px;margin-bottom:30px" (keyup.enter)="loging()" (click)="loging()" id="logining" class="btn btn-primary block full-width m-b">登 录</button>
       <p style="text-align:right" class="text-muted text-center"> <a routerLink="/register"><small>注册</small></a>
       </p>
     </div>

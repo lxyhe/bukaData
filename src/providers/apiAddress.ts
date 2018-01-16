@@ -8,4 +8,6 @@ export const api = {
   roomlist: address + 'roomlist',//房间列表
   getstreamtrend: address + 'getstreamtrend',//单个流走向查询
   getstreaminfo: address + 'getstreaminfo',//单个节点信息详情
+  getuserlist: address + 'userlist',//获取用户列表
+  getusernumber: address + 'totalnow'//查询当前用户总数
 }

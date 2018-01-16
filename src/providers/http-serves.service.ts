@@ -18,7 +18,7 @@ export class HttpServesService {
   }
 
   public post(url: string, params?: any) {
-    let headers = new Headers({ 'Content-Type': 'application/json' });
+    let headers = new Headers({ 'Content-Type': 'application/x-www-form-urlencoded' });
     return this.http.post(url, JSON.stringify(params), new RequestOptions({ headers: headers }))
       .toPromise()
       .then(res => this.handleSuccess(res.json()))

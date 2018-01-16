@@ -1,0 +1,153 @@
+<section style="padding-left:10px;
+padding-right:10px;">
+  <nav>
+    <h4 class="midal">布卡互动网络实时监控系统</h4>
+    <h6 class="midal">2017-11-28 15:45</h6>
+  </nav>
+  <div class="row">
+    <div id="roomStatistics" class="col-md-3 ">
+      <div class="panel panel-default back backs">
+        <div class="panel-heading back_heading">房间统计</div>
+        <div class="panel-body">
+          <ul class="roomInfo">
+            <li>房间总数</li>
+            <li>
+              <span>6823143</span>
+            </li>
+            <li>注册人数</li>
+            <li>
+              <span>
+                  123131
+              </span>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div id="onlinePeople" class="col-md-6 ">
+      <div class="panel panel-default back backs">
+        <div class="panel-heading back_heading">在线人数 <span style="font-size:18px;">312345</span> </div>
+        <div class="panel-body">
+          <div echarts [options]="options" [loading]="isLoading" style="height:250px"></div>
+        </div>
+      </div>
+    </div>
+    <div id="industryStatistics" class="col-md-3 ">
+      <div class="panel panel-default back backs">
+        <div class="panel-heading back_heading">行业统计</div>
+        <div class="panel-body">
+          <div echarts [options]="options1" [loading]="isLoading" style="height:250px"></div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+  <div class="row">
+    <div id="operator" class="col-md-3 ">
+      <div class="panel panel-default back contentheight draw">
+        <div class="panel-heading back_heading">运营商分布</div>
+        <div class="panel-body ">
+          <div echarts [options]="options2" [loading]="isLoading" style="height:230px"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="map">
+      <div echarts [options]="options5" [loading]="isLoading" style="height:600px"></div>
+    </div>
+    <div id="operator" class="col-md-3 col-md-offset-6 ">
+      <div class="panel panel-default back contentheight draw">
+        <div class="panel-heading back_heading">故障统计</div>
+        <div class="panel-body ">
+          <div echarts [options]="options3" [loading]="isLoading" style="height:230px"></div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+  <div class="row">
+    <div id="roomStatistics" class="col-md-3 ">
+      <div class="panel panel-default back">
+        <div class="panel-heading back_heading">服务器使用排行</div>
+        <div class="panel-heading back_heading" style="padding:0">
+          <table style="margin-bottom:0px" class="table  m-b-none">
+            <thead>
+              <tr>
+                <th style="width:25%">服务器</th>
+                <th style="width:25%">CPU</th>
+                <th style="width:25%">内存</th>
+                <th style="width:25%">带宽</th>
+              </tr>
+            </thead>
+          </table>
+        </div>
+        <div class="panel-body" style="overflow:auto;color:#fff">
+          <table class="table m-b-none">
+            <tbody>
+              <tr style="border-bottom:1px solid #38569D">
+                <td class="td_item"><span class="abnormal">服务器-1</span></td>
+                <td class="td_item">80%</td>
+                <td class="td_item">9G/15G</td>
+                <td class="td_item">500MB/100MB</td>
+              </tr>
+              <tr style="border-bottom:1px solid #38569D">
+                <td class="td_item"><span class="abnormal">服务器-1</span></td>
+                <td class="td_item">80%</td>
+                <td class="td_item">9G/15G</td>
+                <td class="td_item">500MB/100MB</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+    <div id="onlinePeople" class="col-md-6 ">
+      <div class="panel panel-default back">
+        <div class="panel-heading back_heading" style="text-align:left">故障通报通知</div>
+        <div class="panel-body" style="height:210px;overflow:auto">
+          <table class="table  m-b-none">
+            <tbody>
+              <tr class="abnormal_list">
+                <td style=" background-color: rgba(0, 0, 0, 0.15);border:none;color:#fff;padding:0">
+                  <span class="abnormal">
+                          异常
+                      </span> 应用层报警:【重要】PC端开始视频采集错误:type:157,机构:buka.Userid35783.msq:110webrtc:BKRTCCORE:sT
+
+                </td>
+              </tr>
+              <tr class="abnormal_list">
+                <td style=" background-color: rgba(0, 0, 0, 0.15);border:none;color:#fff;padding:0">
+                  <span class="abnormal">
+                            异常
+                        </span> 应用层报警:【重要】PC端开始视频采集错误:type:157,机构:buka.Userid35783.msq:110webrtc:BKRTCCORE:sT
+
+                </td>
+              </tr>
+              <tr class="abnormal_list">
+                <td style=" background-color: rgba(0, 0, 0, 0.15);border:none;color:#fff;padding:0">
+                  <span class="abnormal">
+                              异常
+                          </span> 应用层报警:【重要】PC端开始视频采集错误:type:157,机构:buka.Userid35783.msq:110webrtc:BKRTCCORE:sT
+
+                </td>
+              </tr>
+            </tbody>
+          </table>
+
+
+        </div>
+      </div>
+    </div>
+    <div id="industryStatistics" class="col-md-3">
+      <div class="panel panel-default back">
+        <div class="panel-heading back_heading">终端分布</div>
+        <div class="panel-body">
+          <div echarts [options]="options4" [loading]="isLoading" style="height:230px"></div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+
+</section>

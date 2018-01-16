@@ -1,30 +1,22 @@
 <section>
-  <div style="margin:20px 0px 0px 40px;">
-    <button class="btn " (click)="goRealTime()">布卡日志实时系统展示图</button><br/><br/>
-    <button class="btn " (click)="goRealMap()">布卡日志实时系统地图</button>
-  </div>
   <div style="margin-left:20px;min-height:1000px;border-right:1px solid #ddd" class="col-md-2">
-    <h3>当前机构列表</h3>
+    <h3>当前用户列表</h3>
     <ul class="heroes">
-      <li *ngFor="let item of namespace  let i = index;" [class.active]="i==0" [class.selected]="item === selectednamespace" (click)="onSelect(item,i)">
-        <span class="badge">{{item.count}}</span> {{item.namespace}}
-        <a style="float:right;background:red" class="badge" (click)="goRoomList(item)">房间列表</a>
+      <li *ngFor="let item of userlist  let i = index;" [class.active]="i==0" [class.selected]="item === selectednamespace" (click)="getuserInfo(item,i)">
+        <span class="badge">{{i+1}}</span> {{item.user}}
+        <!-- <a style="float:right;background:red" class="badge" (click)="goUserList(item)">用户列表</a> -->
       </li>
     </ul>
     <div>
-      <h3>当前流走向查询</h3>
-      <input style="padding:3px" type="text" [(ngModel)]="stremID" placeholder="请输入流id"><button style="padding:5px" class="btn"
-        (click)="getStrem()">查询</button>
     </div>
-    <div>
-    </div>
-  </div>ni
+  </div>
   <div style="margin-left:20px;min-height:1000px;border-right:1px solid #ddd" class="col-md-6">
     <div>
-      <h3>当前机构所有信息概览</h3>
-      <div *ngFor="let item of namscpaceInfo  let i = index;" class="info">
+      <h3>当前用户所有信息概览</h3>
+      <div *ngFor="let item of userInfo  let i = index;" class="info">
         <div>
           <h4 class="pInfo" (click)="goPublisInfo(item)">发布者信息</h4>
+
           <span>国家: {{item.country}}</span><br/>
           <span>省份: {{item.province}}</span><br/>
           <span>城市:{{item.city}}</span><br/>
@@ -87,43 +79,7 @@
         <span>用户网络类型: {{publishInfo.net_type}}</span><br/>
         <span>服务器地址: {{publishInfo.server_addr}}</span><br/>
         <span>服务器网络类型: {{publishInfo.server_type}}</span><br/>
-        <button type="button" class="btn btn-info" (click)="getUserInfo(publishInfo.user)">当前用户所有流信息概况</button>
-      </div>
-    </div>
-  </div>
-
-  <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-          <h4 class="modal-title" id="myModalLabel">发布者单节点详细信息</h4>
-        </div>
-        <div class="modal-body">
-          <div *ngFor="let item of userInfo  let i = index;" class="info1">
-            <div>
-              <h4 class="pInfo">发布者信息</h4>
-              <span>国家: {{item.country}}</span><br/>
-              <span>省份: {{item.province}}</span><br/>
-              <span>城市:{{item.city}}</span><br/>
-              <span>城镇: {{item.town}}</span><br/>
-              <span>媒体类型:{{item.mediaType}}</span> <br/>
-              <span>服务地址:{{item.server_addr}}</span><br/>
-            </div>
-            <div *ngFor="let play of item.plays" class="playInfo">
-              <h4 class="pInfo">播放者信息</h4>
-              <span>国家: {{play.country}}</span><br/>
-              <span>省份: {{play.province}}</span><br/>
-              <span>城市:{{play.city}}</span><br/>
-              <span>城镇: {{play.town}}</span><br/>
-              <span>媒体类型:{{play.mediaType}}</span> <br/>
-              <span>服务地址:{{play.server_addr}}</span><br/>
-            </div>
-          </div>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
-        </div>
+        <!-- <button type="button" class="btn btn-info" (click)="getUserInfo(publishInfo.user)">当前用户所有流信息概况</button> -->
       </div>
     </div>
   </div>

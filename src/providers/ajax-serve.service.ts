@@ -29,4 +29,10 @@ export class AjaxServeService {
   public getstreaminfo(getstreamInfo) {
     return this.http.post(api.getstreaminfo, getstreamInfo);
   }
+  public getUserlist(getuserlist) {
+    return this.http.post(api.getuserlist, getuserlist);
+  }
+  public getUserNumber(getusernumber) {
+    return this.http.post(api.getusernumber, getusernumber);
+  }
 }
